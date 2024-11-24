@@ -3,7 +3,7 @@ import "./style.css";
 import * as THREE from "three";
 import gsap from "gsap";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
-
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
@@ -45,6 +45,7 @@ const textures = [
 ];
 const spheres = new THREE.Group();
 
+
 const bigSphereRadius = 10; // Set the radius for the big sphere
 const starTextureLoader = new THREE.TextureLoader();
 const starTexture = starTextureLoader.load("./stars.jpg"); // Load your star texture
@@ -62,6 +63,8 @@ bigSphere.position.set(0, 0, 0); // Center it in the scene
 scene.add(bigSphere); // Add the big sphere to the scene
 
 const sphereMesh =[]
+
+
 
 for (let i = 0; i < 4; i++) {
   const textureLoader = new THREE.TextureLoader();
@@ -142,6 +145,9 @@ function animate() {
     const sphere = sphereMesh[i];
     sphere.rotation.y = clock.getElapsedTime()*0.01;
   }
+ 
+  
+
 
   renderer.render(scene, camera);
 }
